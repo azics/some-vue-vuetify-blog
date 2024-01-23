@@ -22,9 +22,7 @@
                 link
                 :to="item.to"
             >
-                <v-list-item-content>
-                    <v-list-item-title>{{ item.title }}</v-list-item-title>
-                </v-list-item-content>
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
             </v-list-item>
         </v-list>
     </v-navigation-drawer>

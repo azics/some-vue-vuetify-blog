@@ -172,11 +172,20 @@
                     >
                         <v-btn
                             :disabled="pageModel === 1"
+                            icon="mdi-arrow-collapse-left"
+                            density="comfortable"
+                            variant="tonal"
+                            rounded
+                            @click="goToPage(firstPageModel)"
+                        ></v-btn>
+                        <v-spacer></v-spacer>
+                        <v-btn
+                            :disabled="pageModel === 1"
                             icon="mdi-arrow-left"
                             density="comfortable"
                             variant="tonal"
                             rounded
-                            @click="prevPage"
+                            @click="goToPage(prevPageModel)"
                         ></v-btn>
 
                         <div class="mx-2 text-caption">
@@ -189,7 +198,16 @@
                             density="comfortable"
                             variant="tonal"
                             rounded
-                            @click="nextPage"
+                            @click="goToPage(nextPageModel)"
+                        ></v-btn>
+                        <v-spacer></v-spacer>
+                        <v-btn
+                            :disabled="pageModel >= pageCountModel"
+                            icon="mdi-arrow-collapse-right"
+                            density="comfortable"
+                            variant="tonal"
+                            rounded
+                            @click="goToPage(lastPageModel)"
                         ></v-btn>
                     </div>
                 </template>
@@ -210,6 +228,8 @@
             const pageCountModel = ref < number > (0);
             const nextPageModel = ref < number | null > (2);
             const prevPageModel = ref < number | null > (null);
+            const firstPageModel = ref < number > (1);
+            const lastPageModel = ref < number > (1);
 
             const loading = ref < boolean > (false);
             const settingsMenu = ref < boolean > (false);
@@ -233,6 +253,8 @@
                     pageCountModel.value = data.pages
                     nextPageModel.value = data.next
                     prevPageModel.value = data.prev
+                    firstPageModel.value = data.first
+                    lastPageModel.value = data.last
 
                 } catch (error) {
                     console.error('Error fetching data:', error);
@@ -241,18 +263,10 @@
                 loading.value = false
             };
 
-            const prevPage = () => {
-                if (pageModel.value !== 1) {
-                    pageModel.value = prevPageModel.value
-                    fetchData()
-                }
-            }
-
-            const nextPage = () => {
-                if (pageModel.value < pageCountModel.value) {
-                    pageModel.value = nextPageModel.value
-                    fetchData()
-                }
+            const goToPage = (page) => {
+                console.log(page)
+                pageModel.value = page;
+                fetchData()
             }
 
             const onSearch = () => {
@@ -287,8 +301,9 @@
                 posts,
                 prevPageModel,
                 nextPageModel,
-                prevPage,
-                nextPage,
+                firstPageModel,
+                lastPageModel,
+                goToPage,
                 fetchData,
                 search,
                 onSearch
