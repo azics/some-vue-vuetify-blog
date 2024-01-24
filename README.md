@@ -1,18 +1,51 @@
 # Vue 3 + TypeScript + Vite
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Напишите простой одностраничный Блог на Vue.js
 
-## Recommended IDE Setup
+Тех задание
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Взять данные отсюда, использовать документацию.
 
-## Type Support For `.vue` Imports in TS
+Сделать список с пагинацией с загрузкой N-количество постов.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+Сделать life search по постам и отдельную страницу поста.
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+Задание с плюсом:
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+На странице поста вывести комментарии(данного поста) с постепенной загрузкой по скролу.
+
+Life search комментария по пользователю.
+
+Сортировку постов по заголовку.
+
+Использовать Nuxt3
+
+Спецификация
+
+В следующем списке, перечислены основные моменты:
+
+Требование:
+
+- Запрещается грузить сразу все данные;
+
+- Использовать Composition API;
+
+- Минимальное количество зависимостей - будет плюсом;
+
+- Единый Code Style в проекте;
+
+- Использование TypeScript;
+
+- Запрещается игнорировать TS ошибки // @ts-ignore
+
+- Бандлер Vite;
+
+- Допускается использование UI библиотек (“Quasar”, “Naiveui”, etc);
+
+- Не использовать axios
+
+Результаты
+
+Разместите исходный код приложения на (GitHub.com, GitLab.com, Bitbucket.org, etc) в публичном репозитории. Также ссылка на live demo для ознакомления и тестирования.
+
+Примечание: вместо live demo, допускается докеризация проекта для локального воспроизведения веб приложения.
