@@ -264,7 +264,6 @@
             };
 
             const goToPage = (page) => {
-                console.log(page)
                 pageModel.value = page;
                 fetchData()
             }
@@ -278,7 +277,6 @@
             onMounted(() => {
                 // Fetch initial data on component mount
                 fetchData()
-                console.log('+++++++++++++', posts)
             });
 
             watch(itemsPerPageModel, (newItemsPerPage, oldItemsPerPage) => {
