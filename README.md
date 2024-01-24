@@ -1,4 +1,4 @@
-# Vue 3 + TypeScript + Vite
+# Vue 3 + TypeScript + Vite + Vuetify + server-json as REST API
 
 ## Напишите простой одностраничный Блог на Vue.js
 
