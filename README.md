@@ -3,12 +3,7 @@
 >[!info] for build
 
 ```
-docker build -t some-vue-vuetify-blog .
-
-```
-
-```
-docker run -p 5173:5173 -d some-vue-vuetify-blog
+docker-compose up --build
 
 ```
 
