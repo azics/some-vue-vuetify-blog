@@ -1,5 +1,5 @@
 # Stage 1: Build Vue.js app
-FROM node:14 as vue_builder
+FROM node as vue_builder
 
 WORKDIR /app
 
@@ -16,7 +16,7 @@ COPY . .
 RUN npm run build
 
 # Stage 2: Build Node.js backend
-FROM node:14 as node_builder
+FROM node as node_builder
 
 WORKDIR /app
 
@@ -30,7 +30,7 @@ RUN npm install
 COPY server .
 
 # Stage 3: Combine Vue.js app and Node.js backend
-FROM node:14
+FROM node
 
 WORKDIR /app
 
