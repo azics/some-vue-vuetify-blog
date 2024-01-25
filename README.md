@@ -1,5 +1,17 @@
 # Vue 3 + TypeScript + Vite + Vuetify + server-json as REST API
 
+>[!info] for build
+
+```
+docker build -t your-image-name
+
+```
+
+```
+docker run -p 80:80 -d your-image-name
+
+```
+
 ## Напишите простой одностраничный Блог на Vue.js
 
 Тех задание

@@ -1,16 +1,16 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import type { RouteRecordRaw } from 'vue-router';
-import introPage from '../pages/intro.vue';
-import errorPage from '../pages/error.vue';
-import blogApp from '../pages/blog/list/index.vue';
-import blogPreview from '../pages/blog/preview/index.vue';
+import { createRouter, createWebHistory } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
+import IntroPage from '../pages/intro.vue'
+import ErrorPage from '../pages/errorpage.vue'
+import BlogApp from '../pages/blog/list/index.vue'
+import BlogPreview from '../pages/blog/preview/index.vue'
 
 const routes: RouteRecordRaw[] = [
   { path: '/', redirect: '/intro' },
-  { path: '/intro', component: introPage },
-  { path: '/blog', name: 'blog-list', component: blogApp },
-  { path: '/blog/:id', name: 'blog-preview', component: blogPreview },
-  { path: '/error', name: 'blog-preview', component: errorPage, meta: {
+  { path: '/intro', component: IntroPage },
+  { path: '/blog', name: 'blog-list', component: BlogApp },
+  { path: '/blog/:id', name: 'blog-preview', component: BlogPreview },
+  { path: '/error', name: 'blog-preview', component: ErrorPage, meta: {
     hideNavbar: true,
    }},
 
@@ -20,6 +20,6 @@ const routes: RouteRecordRaw[] = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
-});
+})
 
-export default router;
+export default router
