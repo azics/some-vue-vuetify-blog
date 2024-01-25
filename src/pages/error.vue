@@ -25,8 +25,6 @@
     </v-container>
 </template>
 
-<script lang="ts"></script>
-
 <style>
     .paragraph-text {
         font-size: 18px;

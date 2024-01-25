@@ -138,7 +138,7 @@
 
             // fetch users
 
-            const loadComments = async({ done }) => {
+            const loadComments = async({ done }: { done: (status: 'loading' | 'error' | 'empty' | 'ok') => void }) => {
                 try {
                     if (page.value !== null) {
                         done('loading')
