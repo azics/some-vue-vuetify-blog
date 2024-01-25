@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "start_api": "npx json-server -w ./server/db.json"
+    "start_api": "npx json-server -w db.json"
   },
   "dependencies": {
     "vue": "^3.3.11",
