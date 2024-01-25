@@ -10,7 +10,7 @@ const routes: RouteRecordRaw[] = [
   { path: '/intro', component: IntroPage },
   { path: '/blog', name: 'blog-list', component: BlogApp },
   { path: '/blog/:id', name: 'blog-preview', component: BlogPreview },
-  { path: '/error', name: 'blog-preview', component: ErrorPage, meta: {
+  { path: '/error', name: 'error', component: ErrorPage, meta: {
     hideNavbar: true,
    }},
 
