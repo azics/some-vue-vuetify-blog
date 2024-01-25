@@ -3,12 +3,12 @@
 >[!info] for build
 
 ```
-docker build -t your-image-name
+docker build -t some-vue-vuetify-blog .
 
 ```
 
 ```
-docker run -p 80:80 -d your-image-name
+docker run -p 80:80 -d some-vue-vuetify-blog
 
 ```
 
