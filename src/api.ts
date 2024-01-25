@@ -23,7 +23,6 @@ interface ApiResponse<T> {
       return this.handleResponse<T>(response);
     }
   
-    // Add other HTTP methods (PUT, DELETE, etc.) as needed
   }
   
   export default new Api('http://localhost:3000');

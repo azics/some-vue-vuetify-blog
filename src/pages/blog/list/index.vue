@@ -4,12 +4,12 @@
             <v-data-iterator
                 :loading="loading"
                 :items="posts"
-                :items-per-page.sync="itemsPerPageModel"
-                :sortBy.sync="sortByModel"
+                :items-per-page="itemsPerPageModel"
+                :sortBy="sortByModel"
                 @update:itemsPerPage="fetchData"
                 @update:sortBy="fetchData"
             >
-                <template v-slot:header="{ itemsPerPage, setItemsPerPage}">
+                <template v-slot:header="{ setItemsPerPage}">
                     <v-toolbar class="px-2">
                         <v-toolbar-title>Some Title for Blog</v-toolbar-title>
                         <v-spacer></v-spacer>
@@ -62,7 +62,7 @@
                                             color="primary"
                                             track-color="grey"
                                             min="1"
-                                            max="6"
+                                            max="4"
                                             :step="1"
                                             tick-size="3"
                                             @update:modelValue="v => colsModel = 12/v"
@@ -96,7 +96,7 @@
                         <v-row dense>
                             <v-col
                                 v-for="item in items"
-                                :key="item.title"
+                                :key="item.raw.id"
                                 cols="auto"
                                 :md="colsModel"
                             >
@@ -108,6 +108,7 @@
                                     <v-list-item
                                         class="mb-2"
                                         :subtitle="item.raw.body"
+                                        :title="item.raw.title"
                                     >
                                         <template v-slot:title>
                                             <div>
@@ -226,7 +227,7 @@
         setup() {
 
             const pageModel = ref < number > (1);
-            const itemsPerPageModel = ref < number > (3); // Set your default page size
+            const itemsPerPageModel = ref < number > (4); // Set your default page size
             const pageCountModel = ref < number > (0);
             const nextPageModel = ref < number | null > (2);
             const prevPageModel = ref < number | null > (null);
@@ -239,16 +240,16 @@
 
             const posts = ref < Post[] > ([]);
 
-            const colsModel = ref < number > (4);
+            const colsModel = ref < number > (6);
             const search = ref < string > ('');
-            const sortByModel = ref < SortItem > ([]);
+            const sortByModel = ref < SortItem[] > ([]);
 
             const fetchData = async () => {
                 loading.value = true
                 try {
                     //&_sort=title
                     const response = await api.get < ApiResponse > (`/posts?_page=${pageModel.value}&_per_page=${itemsPerPageModel.value}${sortByModel.value?.length ? '&_sort=title' : ''}`);
-                    const data: ApiResponse = await response.json();
+                    const data: ApiResponse = await response.data;
 
                     // Update the reactive variables
                     posts.value = data.data
@@ -265,9 +266,11 @@
                 loading.value = false
             };
 
-            const goToPage = (page) => {
-                pageModel.value = page;
-                fetchData()
+            const goToPage = (page: number | null) => {
+                if(page) {
+                    pageModel.value = page;
+                    fetchData()
+                }
             }
 
             const onSearch = () => {
@@ -281,11 +284,11 @@
                 fetchData()
             });
 
-            watch(itemsPerPageModel, (newItemsPerPage, oldItemsPerPage) => {
+            watch(itemsPerPageModel, () => {
                 fetchData()
             });
 
-            watch(sortByModel, (newItemsPerPage, oldItemsPerPage) => {
+            watch(sortByModel, () => {
                 fetchData()
             });
 
