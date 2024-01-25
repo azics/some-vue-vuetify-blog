@@ -7,15 +7,15 @@
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "start_api": "npx json-server -w db.json"
+    "start_api": "npx json-server -w ./server/db.json"
   },
   "dependencies": {
-    "json-server": "^1.0.0-alpha.22",
     "vue": "^3.3.11",
     "vue-router": "^4.2.5",
     "vuetify": "^3.5.1"
   },
   "devDependencies": {
+    "json-server": "^1.0.0-alpha.22",
     "@mdi/font": "^7.4.47",
     "@vitejs/plugin-vue": "^4.5.2",
     "typescript": "^5.2.2",

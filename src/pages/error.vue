@@ -1,11 +1,11 @@
 <template>
-    <VContainer fluid>
-        <VLayout
+    <v-container fluid>
+        <v-layout
             row
             wrap
         >
-            <VFlex>
-                <VCard
+            <v-flex>
+                <v-card
                     height="400"
                     color="transparent"
                     flat
@@ -19,10 +19,10 @@
                         <br />
                         <br />Try going back to home page and repeating your action.
                     </div>
-                </VCard>
-            </VFlex>
-        </VLayout>
-    </VContainer>
+                </v-card>
+            </v-flex>
+        </v-layout>
+    </v-container>
 </template>
 
 <script lang="ts"></script>

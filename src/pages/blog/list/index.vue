@@ -46,7 +46,7 @@
                                             v-model="itemsPerPageModel"
                                             label="itemsPerPage"
                                             :items="[3,4,6,8,9,16,18,-1]"
-                                            @change="(v) => setItemsPerPage(v)"
+                                            @change="(v: number) => setItemsPerPage(v)"
                                         ></v-select>
                                     </v-list-item>
 

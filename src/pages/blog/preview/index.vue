@@ -66,7 +66,7 @@
 
 <script lang="ts">
     import { ref, onMounted, defineComponent, watch } from 'vue';
-    import { VInfinityScroll } from 'vuetify/lib';
+    import { VInfiniteScroll } from 'vuetify/components';
     import { useRouter } from 'vue-router';
     import api from '../../../api'; // Import the Api instance
 
@@ -114,13 +114,25 @@
 
             // making filter by user
 
-            const infScrll = ref < VInfinityScroll | null > (null);
+            const infScrll = ref < VInfiniteScroll | null > (null);
 
             const triggerLoadEvent = () => {
                 comments.value = []
                 page.value = 1
                 if (infScrll.value && infScrll.value.onLoad) {
-                    infScrll.value.onLoad();
+                    infScrll.value.onLoad({
+                        side: 'end',
+                        done: async () => {
+                            const response = await api.get < ApiResponse > (`/comments?postId=${postId.value}${filterUser.value == 'All' ? '' : '&email=' + filterUser.value}&_page=${page.value}&_per_page=${itemsPerPage.value}`);
+                            const data: ApiResponse = response.data
+
+                            setTimeout(() => {
+                                comments.value = [...comments.value, ...data.data];
+                                page.value = data.next
+                                return 'ok'
+                            }, 300)
+                        }
+                    });
                 }
             };
 
@@ -171,7 +183,7 @@
                 // Fetch initial data on component mount
                 fetchPost()
                 getUsers()
-                infScrll.value = document.querySelector('#infScrll') as VInfinityScroll
+                infScrll.value = document.querySelector('#infScrll') as unknown as VInfiniteScroll
             });
 
             watch(filterUser, (v) => {

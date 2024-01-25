@@ -10,10 +10,11 @@ const routes: RouteRecordRaw[] = [
   { path: '/intro', component: introPage },
   { path: '/blog', name: 'blog-list', component: blogApp },
   { path: '/blog/:id', name: 'blog-preview', component: blogPreview },
-
-  { path: '/:catchAll(.*)', component: errorPage,  meta: {
+  { path: '/error', name: 'blog-preview', component: errorPage, meta: {
     hideNavbar: true,
    }},
+
+  { path: '/:catchAll(.*)', redirect: '/error'},
 ];
 
 const router = createRouter({
