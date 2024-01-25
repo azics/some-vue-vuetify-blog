@@ -1,19 +1,16 @@
-# Stage 1: Build Vue.js app
-FROM node as vue_builder
+FROM node as builder
 
 WORKDIR /app
 
-# Copy the package.json and package-lock.json to install dependencies
 COPY package*.json ./
 
-# Install dependencies
 RUN npm install
 
 # Copy the entire application
 COPY . .
 
 # Build the Vue.js app
-RUN npm run build
+RUN npm run dev
 
 # Stage 2: Build Node.js backend
 FROM node as node_builder

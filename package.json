@@ -12,7 +12,9 @@
   "dependencies": {
     "vue": "^3.3.11",
     "vue-router": "^4.2.5",
-    "vuetify": "^3.5.1"
+    "vuetify": "^3.5.1",
+    "json-server": "^1.0.0-alpha.22"
+
   },
   "devDependencies": {
     "json-server": "^1.0.0-alpha.22",
