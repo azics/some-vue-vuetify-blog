@@ -12,4 +12,4 @@ RUN npm run dev
 
 EXPOSE 5173
 
-CMD ["npm", "run", "start_api", "npm", "run", "dev"]
+CMD ["sh", "-c", "npm run start_api && npm run dev"]
