@@ -219,6 +219,8 @@
 <script lang="ts">
     import { ref, onMounted, defineComponent, watch } from 'vue';
     import type { ApiResponse, Post, SortItem } from './types'
+    import api from '../../../api'; // Import the Api instance
+
 
     export default defineComponent({
         setup() {
@@ -245,7 +247,7 @@
                 loading.value = true
                 try {
                     //&_sort=title
-                    const response = await fetch(`http://localhost:3000/posts?_page=${pageModel.value}&_per_page=${itemsPerPageModel.value}${sortByModel.value?.length ? '&_sort=title' : ''}`);
+                    const response = await api.get < ApiResponse > (`/posts?_page=${pageModel.value}&_per_page=${itemsPerPageModel.value}${sortByModel.value?.length ? '&_sort=title' : ''}`);
                     const data: ApiResponse = await response.json();
 
                     // Update the reactive variables
